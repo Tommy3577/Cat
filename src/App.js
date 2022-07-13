@@ -94,12 +94,26 @@ const App = () => {
 
   
 
-  const [ Cat , setCat ] = useState("");
+  const [ cat , setCat ] = useState([]);
 
-  const getCat = async () => {
-    let response = await fetch("https://api.thecatapi.com/v1/images/search");
-    let CatData = await response.json();
-    setCat(CatData[0]);
+  const getCat = () => {
+
+    let urls = []
+    const getOneCat = async () => {
+
+      let response = await fetch("https://api.thecatapi.com/v1/images/search");
+      let data = await response.json();
+      let url = data[0].url
+      urls.push(url)
+    }
+
+    Array.from(Array(16)).map( x => {
+      getOneCat()
+    })
+
+    setCat( prev => urls )
+    console.log( cat )
+
   };
 
   useEffect(() => {
@@ -131,8 +145,8 @@ const App = () => {
       
             {/* {Cat.url ? <p><img src = {Cat.url}  alt = "cat" width={Cat.width} height={Cat.height}></img></p> : <p>Loading...</p>}
             {Cat.url ? <p><img src = {Cat.url}  alt = "cat" width={Cat.width} height={Cat.height}></img></p> : <p>Loading...</p>} */}
-            {Cat.url ? <p><img src = {Cat.url}  alt = "cat" width="300px" height="300px"></img></p> : <p>Loading...</p>}
-            {Cat.url ? <p><img src = {Cat.url}  alt = "cat" width="300px" height="300px"></img></p> : <p>Loading...</p>}
+            {cat.url ? <p><img src = {cat.url}  alt = "cat" width="300px" height="300px"></img></p> : <p>Loading...</p>}
+            {cat.url ? <p><img src = {cat.url}  alt = "cat" width="300px" height="300px"></img></p> : <p>Loading...</p>}
             {/* {Cat.url ? <p><img src = {Cat.url}  alt = "cat" width="300px" height="300px"></img></p> : <p>Loading...</p>} */}
                  {/* {cat ? (cat.url.map((cat, index) => {return <Image image={image} />; */}
                  {/* })) : (<p>loading...</p>)} */}
