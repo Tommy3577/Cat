@@ -1,4 +1,5 @@
 
+import Card from './components/Card'
 import { useEffect, useState } from "react";
 let faker = require('faker');
 
@@ -140,6 +141,9 @@ const App = () => {
 
   return (
     <div>
+
+      <Card url="https://cdn2.thecatapi.com/images/252.jpg"  price='2' name='catman' breed='Selkirk Rex'/>
+
       <h1>cats4lyf.co.uk</h1>
       <h2>Prime Posh Premium Pricey Pussy Purchases Place</h2>
       
