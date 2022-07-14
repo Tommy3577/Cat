@@ -1,3 +1,5 @@
+import './App.css'
+
 
 import Card from './components/Card'
 // import Basket from './components/Basket';
@@ -58,6 +60,10 @@ let randomfirstName16 = faker.name.firstName()
 
 const App = () => {
 
+  // make basket state: array of cat objects
+  // make handleAddItem: input will be the items key, it will then add a cat with that key to the basket
+  // make handelRemoveItem: input will be an event, it will happen onClick, input may also be an index, removes an item from the absket at a specific index
+
 
   // Basket - leave it shaun!!
 
@@ -99,12 +105,8 @@ const App = () => {
       element.breed = faker.animal.cat()
     })
 
-
-
-    console.log(objectArray)
- 
+    // set cats state 
     setCats( objectArray )
-
   };
 
   useEffect(() => {
@@ -112,16 +114,42 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-
-      {cats.map((cat, index) => (
-              <Card key={index} url={cat.image}  price={cat.price} name={cat.name} breed={cat.breed}/>
-            ))}
+    <>
 
 
-      <h1>cats4lyf.co.uk</h1>
+      <div className='body'>
+        
+          <div class="sidebar" contenteditable>
+              Min: 150px
+              <br/>
+              Max: 25%
+            </div>
+            <div class="content" contenteditable>
+
+                <div className='header'>
+
+                </div>
+
+                <div className='cards-container'>
+
+                {cats.map((cat, index) => (
+                      <Card key={index} url={cat.image}  price={cat.price} name={cat.name} breed={cat.breed}/>
+                    ))}
+                    
+                </div>
+                
+            </div>
+            
+      </div>
+
+
+
+
+
+
+      {/* <h1>cats4lyf.co.uk</h1>
       <h2>Prime Posh Premium Pricey Pussy Purchases Place</h2>
-      
+       */}
             {/* {Cat.url ? <p><img src = {Cat.url}  alt = "cat" width={Cat.width} height={Cat.height}></img></p> : <p>Loading...</p>}
             {Cat.url ? <p><img src = {Cat.url}  alt = "cat" width={Cat.width} height={Cat.height}></img></p> : <p>Loading...</p>} */}
             {/* {cats.url ? <p><img src = {cats.url}  alt = "cat" width="300px" height="300px"></img></p> : <p>Loading...</p>} */}
@@ -129,14 +157,14 @@ const App = () => {
             {/* {Cat.url ? <p><img src = {Cat.url}  alt = "cat" width="300px" height="300px"></img></p> : <p>Loading...</p>} */}
                  {/* {cat ? (cat.url.map((cat, index) => {return <Image image={image} />; */}
                  {/* })) : (<p>loading...</p>)} */}
-      <button onClick={getCat}>Load cat</button>
+      {/* <button onClick={getCat}>Load cat</button>
 
       <h2> Cat price {randomPrice1} </h2>
       <h2> Cat Breed {randomCat1} </h2>
-      <h2> Cat Name  {randomfirstName1} </h2>
+      <h2> Cat Name  {randomfirstName1} </h2> */}
 
     
-    </div>
+    </>
   );
 };
 
