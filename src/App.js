@@ -77,7 +77,7 @@ const App = () => {
 
 
 
- 
+
     setCats( objectArray )
 
   };
@@ -90,7 +90,7 @@ const App = () => {
     <div>
 
       {cats.map((cat, index, value) => (
-              <Card handleSubmit={handleSubmit} id={value} key={index} url={cat.image}  price={cat.price} name={cat.name} breed={cat.breed}/>
+              <Card handleSubmit={handleSubmit} key={index} url={cat.image}  price={cat.price} name={cat.name} breed={cat.breed}/>
             ))}
 
 
