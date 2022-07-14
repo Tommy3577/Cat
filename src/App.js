@@ -56,45 +56,10 @@ let randomPrice16 = faker.commerce.price()
 let randomCat16 = faker.animal.cat()
 let randomfirstName16 = faker.name.firstName()
 
-// faker.seed(123);
-
-// let firstRandom = faker.datatype.number();
-
-// // Setting the seed again resets the sequence.
-// faker.seed(123);
-
-// let secondRandom = faker.datatype.number();
-
-// console.log(firstRandom === secondRandom);
-
-// const CatImage = () => {
-//   const [cat, setCat] = useState("");
-
-//   const getCat = async () => {
-//       let response = await fetch("");
-//       let data = await response.json();
-//       setItem(data[0]);
-//       };
-//       useEffect(() => {
-//       getCat();
-//       }, []);
-//   return (
-//   <div>
-//       {cat ? (
-//       cat.cat_image.map((cat, index) => {
-//           return <Image image={image} />;
-//       })
-//       ) : (
-//       <p>loading...</p>
-//       )}
-//       <button onClick={getCat}>get cat image</button>
-//   </div>
-//   );
-// };
-
-
-
 const App = () => {
+
+
+  // Basket - leave it shaun!!
 
   // const { cards } = data;
   // // needs to be added to main (displaying component) -- we are getting the CARDS from the CAT DATA
@@ -110,28 +75,35 @@ const App = () => {
   //   }
   // }
 
+  const [ cats , setCats ] = useState([]);
 
-  
+  const getCat = async () => {
 
-  const [ cat , setCat ] = useState([]);
+    const response = await fetch('https://api.thecatapi.com/v1/images/search?limit=20')
+    const data =  await response.json()
+    // make array of image strings
+    let imageArray = data.map( x => x.url )
 
-  const getCat = () => {
-
-    let urls = []
-    const getOneCat = async () => {
-
-      let response = await fetch("https://api.thecatapi.com/v1/images/search");
-      let data = await response.json();
-      let url = data[0].url
-      urls.push(url)
-    }
-
-    Array.from(Array(16)).map( x => {
-      getOneCat()
+    // make an array of image objects
+    let objectArray = []
+    imageArray.forEach( element  => {
+      objectArray.push({
+        image: element
+      })
     })
 
-    setCat( prev => urls )
-    console.log( cat )
+    // make an array of cat objects
+    objectArray.forEach( (element) => {
+      element.name = faker.name.firstName()
+      element.price = faker.commerce.price()
+      element.breed = faker.animal.cat()
+    })
+
+
+
+    console.log(objectArray)
+ 
+    setCats( objectArray )
 
   };
 
@@ -139,37 +111,21 @@ const App = () => {
     getCat();
   }, []);
 
-
-// const App = () => {
-
-
-  
-
-//   const [ Cat , setCat ] = useState("");
-
-//   const getCat = async () => {
-//     let response = await fetch("https://api.thecatapi.com/v1/images/search");
-//     let CatData = await response.json();
-//     setCat(CatData[0]);
-//   };
-
-//   useEffect(() => {
-//     getCat();
-//   }, []);
-
   return (
     <div>
 
-      <Card url="https://cdn2.thecatapi.com/images/252.jpg"  price={faker.commerce.price()} name={faker.name.firstName()} breed={faker.animal.cat()}/>
-      <Card url="https://cdn2.thecatapi.com/images/252.jpg"  price={faker.commerce.price()} name={faker.name.firstName()} breed={faker.animal.cat()}/>
+      {cats.map((cat, index) => (
+              <Card key={index} url={cat.image}  price={cat.price} name={cat.name} breed={cat.breed}/>
+            ))}
+
 
       <h1>cats4lyf.co.uk</h1>
       <h2>Prime Posh Premium Pricey Pussy Purchases Place</h2>
       
             {/* {Cat.url ? <p><img src = {Cat.url}  alt = "cat" width={Cat.width} height={Cat.height}></img></p> : <p>Loading...</p>}
             {Cat.url ? <p><img src = {Cat.url}  alt = "cat" width={Cat.width} height={Cat.height}></img></p> : <p>Loading...</p>} */}
-            {cat.url ? <p><img src = {cat.url}  alt = "cat" width="300px" height="300px"></img></p> : <p>Loading...</p>}
-            {cat.url ? <p><img src = {cat.url}  alt = "cat" width="300px" height="300px"></img></p> : <p>Loading...</p>}
+            {/* {cats.url ? <p><img src = {cats.url}  alt = "cat" width="300px" height="300px"></img></p> : <p>Loading...</p>} */}
+            {/* {cats.url ? <p><img src = {cats.url}  alt = "cat" width="300px" height="300px"></img></p> : <p>Loading...</p>} */}
             {/* {Cat.url ? <p><img src = {Cat.url}  alt = "cat" width="300px" height="300px"></img></p> : <p>Loading...</p>} */}
                  {/* {cat ? (cat.url.map((cat, index) => {return <Image image={image} />; */}
                  {/* })) : (<p>loading...</p>)} */}
@@ -179,65 +135,6 @@ const App = () => {
       <h2> Cat Breed {randomCat1} </h2>
       <h2> Cat Name  {randomfirstName1} </h2>
 
-      <h2> Cat price  {randomPrice2} </h2>
-      <h2> Cat Breed  {randomCat2} </h2>
-      <h2> Cat Name   {randomfirstName2} </h2>
-      
-      <h2> Cat price  {randomPrice3} </h2>
-      <h2> Cat Breed  {randomCat3} </h2>
-      <h2> Cat Name   {randomfirstName3} </h2>
-      
-      <h2> Cat price  {randomPrice4} </h2>
-      <h2> Cat Breed  {randomCat4} </h2>
-      <h2> Cat Name   {randomfirstName4} </h2>
-      
-      <h2> Cat price  {randomPrice5} </h2>
-      <h2> Cat Breed  {randomCat5} </h2>
-      <h2> Cat Name   {randomfirstName5} </h2>
-      
-      <h2> Cat price  {randomPrice6} </h2>
-      <h2> Cat Breed  {randomCat6} </h2>
-      <h2> Cat Name   {randomfirstName6} </h2>
-      
-      <h2> Cat price  {randomPrice7} </h2>
-      <h2> Cat Breed  {randomCat7} </h2>
-      <h2> Cat Name   {randomfirstName7} </h2>
-      
-      <h2> Cat price  {randomPrice8} </h2>
-      <h2> Cat Breed  {randomCat8} </h2>
-      <h2> Cat Name   {randomfirstName8} </h2>
-      
-      <h2> Cat price  {randomPrice9} </h2>
-      <h2> Cat Breed  {randomCat9} </h2>
-      <h2> Cat Name   {randomfirstName9} </h2>
-      
-      <h2> Cat price  {randomPrice10} </h2>
-      <h2> Cat Breed  {randomCat10} </h2>
-      <h2> Cat Name   {randomfirstName10} </h2>
-
-      <h2> Cat price  {randomPrice11} </h2>
-      <h2> Cat Breed  {randomCat11} </h2>
-      <h2> Cat Name   {randomfirstName11} </h2>
-      
-      <h2> Cat price  {randomPrice12} </h2>
-      <h2> Cat Breed  {randomCat12} </h2>
-      <h2> Cat Name   {randomfirstName12} </h2>
-
-      <h2> Cat price  {randomPrice13} </h2>
-      <h2> Cat Breed  {randomCat13} </h2>
-      <h2> Cat Name   {randomfirstName13} </h2>
-      
-      <h2> Cat price  {randomPrice14} </h2>
-      <h2> Cat Breed  {randomCat14} </h2>
-      <h2> Cat Name   {randomfirstName14} </h2>
-
-      <h2> Cat price  {randomPrice15} </h2>
-      <h2> Cat Breed  {randomCat15} </h2>
-      <h2> Cat Name   {randomfirstName15} </h2>
-      
-      <h2> Cat price  {randomPrice16} </h2>
-      <h2> Cat Breed  {randomCat16} </h2>
-      <h2> Cat Name   {randomfirstName16} </h2>
     
     </div>
   );
