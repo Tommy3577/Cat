@@ -1,6 +1,8 @@
 import React from 'react';
+import App from '../App';
 
-function Basket(props) {
+const Basket = (props) => {
+    
     const {basketItems, onRemove} = props;
     const totalPrice = basketItems.reduce((a, c) => a + c.price * c.qty, 0);
     return (
@@ -12,7 +14,7 @@ function Basket(props) {
                 <div>
                     <div>{cat.name}</div>
                     <div>
-                        <button onClick={()=>onRemove(cat)}>Delete</button>
+
                     </div>
                     <div>
                         {cat.qty} x ${cat.price.toFixed(2)}

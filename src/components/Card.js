@@ -1,10 +1,10 @@
 import './Card.css'
 
-const Card = (props) => {
+const Card = (props, index, handleSubmit, cats, id) => {
     
 
     return (
-        <div className='card-container'>
+        <div className='card-container' onClick={() => props.handleSubmit(id)}>
             <div className='card-item card-image'>
                 <img src={props.url}/> 
             </div>
@@ -18,6 +18,7 @@ const Card = (props) => {
                 </p>
 
             </div>
+            {/* <button onClick={()=> {handleSubmit()}}>Add</button> */}
         </div>
     )
 }
