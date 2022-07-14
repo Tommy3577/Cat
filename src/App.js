@@ -92,6 +92,20 @@ let randomfirstName16 = faker.name.firstName()
 
 const App = () => {
 
+  const { cards } = data;
+  const [basketItems, setBasketItems] = useState([]);
+  const onAdd = (cards) => {
+    {setBasketItems([...basketItems, {...cards, qty: 1}])}
+  }
+
+  const onRemove = (card) => {
+    const exist = basketItems.find((x) => x.id === card.id);
+    if(exist.qty === 1) {
+      setBasketItems(basketItems.filter((x) => x.id !== card.id))
+    }
+  }
+
+
 
   
 
