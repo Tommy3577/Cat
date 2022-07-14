@@ -1,5 +1,9 @@
 
 import Card from './components/Card'
+// import Basket from './components/Basket';
+// import data from './data';
+
+
 import { useEffect, useState } from "react";
 let faker = require('faker');
 
@@ -92,19 +96,19 @@ let randomfirstName16 = faker.name.firstName()
 
 const App = () => {
 
-  const { cards } = data;
-  const [basketItems, setBasketItems] = useState([]);
-  const onAdd = (cards) => {
-    {setBasketItems([...basketItems, {...cards, qty: 1}])}
-  }
+  // const { cards } = data;
+  // // needs to be added to main (displaying component) -- we are getting the CARDS from the CAT DATA
+  // const [basketItems, setBasketItems] = useState([]);
+  // const onAdd = (cards) => {
+  //   {setBasketItems([...basketItems, {...cards, qty: 1}])}
+  // }
 
-  const onRemove = (card) => {
-    const exist = basketItems.find((x) => x.id === card.id);
-    if(exist.qty === 1) {
-      setBasketItems(basketItems.filter((x) => x.id !== card.id))
-    }
-  }
-
+  // const onRemove = (card) => {
+  //   const exist = basketItems.find((x) => x.id === card.id);
+  //   if(exist.qty === 1) {
+  //     setBasketItems(basketItems.filter((x) => x.id !== card.id))
+  //   }
+  // }
 
 
   
@@ -156,7 +160,8 @@ const App = () => {
   return (
     <div>
 
-      <Card url="https://cdn2.thecatapi.com/images/252.jpg"  price='2' name='catman' breed='Selkirk Rex'/>
+      <Card url="https://cdn2.thecatapi.com/images/252.jpg"  price={faker.commerce.price()} name={faker.name.firstName()} breed={faker.animal.cat()}/>
+      <Card url="https://cdn2.thecatapi.com/images/252.jpg"  price={faker.commerce.price()} name={faker.name.firstName()} breed={faker.animal.cat()}/>
 
       <h1>cats4lyf.co.uk</h1>
       <h2>Prime Posh Premium Pricey Pussy Purchases Place</h2>
