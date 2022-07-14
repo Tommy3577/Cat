@@ -5,56 +5,10 @@ import Card from './components/Card'
 
 
 import { useEffect, useState } from "react";
+
 let faker = require('faker');
 
-let randomPrice1 = faker.commerce.price()
-let randomCat1 = faker.animal.cat()
-let randomfirstName1 = faker.name.firstName()
-let randomPrice2 = faker.commerce.price()
-let randomCat2 = faker.animal.cat()
-let randomfirstName2 = faker.name.firstName()
-let randomPrice3 = faker.commerce.price()
-let randomCat3 = faker.animal.cat()
-let randomfirstName3 = faker.name.firstName()
-let randomPrice4 = faker.commerce.price()
-let randomCat4 = faker.animal.cat()
-let randomfirstName4 = faker.name.firstName()
-let randomPrice5 = faker.commerce.price()
-let randomCat5 = faker.animal.cat()
-let randomfirstName5 = faker.name.firstName()
-let randomPrice6 = faker.commerce.price()
-let randomCat6 = faker.animal.cat()
-let randomfirstName6 = faker.name.firstName()
-let randomPrice7 = faker.commerce.price()
-let randomCat7 = faker.animal.cat()
-let randomfirstName7 = faker.name.firstName()
-let randomPrice8 = faker.commerce.price()
-let randomCat8 = faker.animal.cat()
-let randomfirstName8 = faker.name.firstName()
-let randomPrice9 = faker.commerce.price()
-let randomCat9 = faker.animal.cat()
-let randomfirstName9 = faker.name.firstName()
-let randomPrice10 = faker.commerce.price()
-let randomCat10 = faker.animal.cat()
-let randomfirstName10 = faker.name.firstName()
-let randomPrice11 = faker.commerce.price()
-let randomCat11 = faker.animal.cat()
-let randomfirstName11 = faker.name.firstName()
-let randomPrice12 = faker.commerce.price()
-let randomCat12 = faker.animal.cat()
-let randomfirstName12 = faker.name.firstName()
-let randomPrice13 = faker.commerce.price()
-let randomCat13 = faker.animal.cat()
-let randomfirstName13 = faker.name.firstName()
-let randomPrice14 = faker.commerce.price()
-let randomCat14 = faker.animal.cat()
-let randomfirstName14 = faker.name.firstName()
-let randomPrice15 = faker.commerce.price()
-let randomCat15 = faker.animal.cat()
-let randomfirstName15 = faker.name.firstName()
-let randomPrice16 = faker.commerce.price()
-let randomCat16 = faker.animal.cat()
-let randomfirstName16 = faker.name.firstName()
+
 
 const App = () => {
 
@@ -76,6 +30,28 @@ const App = () => {
   // }
 
   const [ cats , setCats ] = useState([]);
+  const [ basket, setBasket] = useState([]);
+  
+  
+
+  function handleSubmit() {
+    const tester = {}
+    setBasket([...basket].concat(tester))
+
+  console.log(basket)
+  // console.log(index)
+  // console.log(basket)
+  // console.log(typeof e)
+  }
+
+  // function deleteBasket(id) {
+  //   const updatedBasket = [...basket].filter((basket) => basket.id !== id)
+
+  //   setBasket(updatedBasket)
+  // }
+
+
+
 
   const getCat = async () => {
 
@@ -101,7 +77,6 @@ const App = () => {
 
 
 
-    console.log(objectArray)
  
     setCats( objectArray )
 
@@ -114,8 +89,8 @@ const App = () => {
   return (
     <div>
 
-      {cats.map((cat, index) => (
-              <Card key={index} url={cat.image}  price={cat.price} name={cat.name} breed={cat.breed}/>
+      {cats.map((cat, index, value) => (
+              <Card handleSubmit={handleSubmit} id={value} key={index} url={cat.image}  price={cat.price} name={cat.name} breed={cat.breed}/>
             ))}
 
 
@@ -129,13 +104,7 @@ const App = () => {
             {/* {Cat.url ? <p><img src = {Cat.url}  alt = "cat" width="300px" height="300px"></img></p> : <p>Loading...</p>} */}
                  {/* {cat ? (cat.url.map((cat, index) => {return <Image image={image} />; */}
                  {/* })) : (<p>loading...</p>)} */}
-      <button onClick={getCat}>Load cat</button>
 
-      <h2> Cat price {randomPrice1} </h2>
-      <h2> Cat Breed {randomCat1} </h2>
-      <h2> Cat Name  {randomfirstName1} </h2>
-
-    
     </div>
   );
 };
