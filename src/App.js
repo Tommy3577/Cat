@@ -33,7 +33,7 @@ const App = () => {
 
   const getCat = async () => {
 
-    const response = await fetch('https://api.thecatapi.com/v1/images/search?limit=50')
+    const response = await fetch('https://api.thecatapi.com/v1/images/search?limit=52')
     const data =  await response.json()
 
     // make an array of image objects
@@ -81,7 +81,7 @@ const App = () => {
               <div className='header'>
                 <p className='title'>Cats 4 Lyf</p>
                   <p className='subTitle'>
-                  Please select one out our Puurrfect Pets to puurrchase!  
+                  Please select one of our Puurrfect Pets to puurrchase!  
                   </p>
               </div>
 
