@@ -95,25 +95,28 @@ const App = () => {
     <>
       <div className='body'>
         
-          <div class="sidebar" contenteditable>
+          {/* <div class="sidebar" contenteditable>
               {basket.map((cat, index) => (
                         <Basket cat={cat} deleteBasket={deleteBasket} key={index}/>
                       ))}
-
               <div className="total-container">
-              
-              {
-                total
-                ?
-                <p>£{total}.00</p>
-                :
-                <span></span>
-              }
-              
-
+              {total ? <p> £{total}.00</p> : <span></span>}
               </div>
+            </div> */}
 
-            </div>
+                {total ? 
+              <div class="sidebar" contenteditable>
+              {basket.map((cat, index) => (
+                        <Basket cat={cat} deleteBasket={deleteBasket} key={index}/>
+                      ))}
+              <div className="total-container">
+              {total ? <p> £{total}.00</p> : <span></span>}
+              </div>
+            </div>:<span></span>
+              }
+
+
+
 
             <div class="content" contenteditable>
 
