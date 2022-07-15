@@ -37,12 +37,20 @@ const App = () => {
     setBasket( newArray )
   }
 
-  function deleteBasket(id) {
+  function deleteBasket() {
     const updatedBasket = [...basket].filter((basket) => basket.id !== id)
 
     setBasket(updatedBasket)
   }
+
+  function totalBasket() {
+    for (i = 0; index < basket.length; i++) {
+      sum += basket[i].price;
+      console.log('sum')
+    }
+  }
   
+
 
   const getCat = async () => {
 
