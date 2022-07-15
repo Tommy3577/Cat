@@ -1,18 +1,18 @@
-import './App.css'
-
+import './App.css' 
 
 import Card from './components/Card'
-// import Basket from './components/Basket';
+import Basket from './components/Basket';
 // import data from './data';
 
 
-import { useEffect, useState } from "react";
 
+import { useEffect, useState, useRef } from "react";
 let faker = require('faker');
 
 
-
 const App = () => {
+
+  const cardRef = useRef()
 
   // make basket state: array of cat objects
   // make handleAddItem: input will be the items key, it will then add a cat with that key to the basket
@@ -36,28 +36,38 @@ const App = () => {
   // }
 
   const [ cats , setCats ] = useState([]);
-  const [ basket, setBasket] = useState([]);
-  
-  
+  const [ basket, setBasket ] = useState([]);
 
-  function handleSubmit() {
-    const tester = {}
-    setBasket([...basket].concat(tester))
-
-  console.log(basket)
-  // console.log(index)
-  // console.log(basket)
-  // console.log(typeof e)
+  const onFinish = (event) => {
+    let id = event.target.id;
+    console.log(id)
+    if(id=== "1") {
+      console.log('hurray')
+    } else {
+      console.log('still hurray')
+    }
   }
 
-  // function deleteBasket(id) {
-  //   const updatedBasket = [...basket].filter((basket) => basket.id !== id)
-
-  //   setBasket(updatedBasket)
-  // }
 
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    const id = event.currentTarget.id;
+    const newArray = [...basket]
+    setBasket( [...basket, cats[id]])
 
+    
+    console.log(cats[id])
+    // console.log(basket)
+    // setBasket( () => newArray.push(cats[id]) )
+  }
+
+  function deleteBasket(id) {
+    const updatedBasket = [...basket].filter((basket) => basket.id !== id)
+
+    setBasket(updatedBasket)
+  }
+  
 
   const getCat = async () => {
 
@@ -82,12 +92,12 @@ const App = () => {
     })
 
     // set cats state 
-    
     setCats( objectArray )
   };
 
   useEffect(() => {
     getCat();
+
   }, []);
 
   return (
@@ -97,9 +107,18 @@ const App = () => {
       <div className='body'>
         
           <div class="sidebar" contenteditable>
-              Min: 150px
+
+              <button onClick={onFinish} Id={'1'}>Next</button>
+              <button onClick={onFinish} Id={'2'}>Next</button>
               <br/>
-              Max: 25%
+
+
+              {basket.map((item, index) => (
+                        <Basket name={item.name} price={item.price} breed={item.breed}/>
+                      ))}
+              
+
+
             </div>
             <div class="content" contenteditable>
 
@@ -110,7 +129,7 @@ const App = () => {
                 <div className='cards-container'>
 
                 {cats.map((cat, index) => (
-                      <Card key={index} url={cat.image}  price={cat.price} name={cat.name} breed={cat.breed}/>
+                      <Card key={index} url={cat.image} handleSubmit={handleSubmit} price={cat.price} name={cat.name} breed={cat.breed} id={index} cardRef={cardRef} />
                     ))}
                     
                 </div>
@@ -122,9 +141,6 @@ const App = () => {
 
 
 
-      {cats.map((cat, index, value) => (
-              <Card handleSubmit={handleSubmit} key={index} url={cat.image}  price={cat.price} name={cat.name} breed={cat.breed}/>
-            ))}
 
 
       {/* <h1>cats4lyf.co.uk</h1>
@@ -137,9 +153,6 @@ const App = () => {
             {/* {Cat.url ? <p><img src = {Cat.url}  alt = "cat" width="300px" height="300px"></img></p> : <p>Loading...</p>} */}
                  {/* {cat ? (cat.url.map((cat, index) => {return <Image image={image} />; */}
                  {/* })) : (<p>loading...</p>)} */}
-
-    </div>
-
       {/* <button onClick={getCat}>Load cat</button>
 
       <h2> Cat price {randomPrice1} </h2>
@@ -152,4 +165,3 @@ const App = () => {
 };
 
 export default App;
-
