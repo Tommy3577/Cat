@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import Basket from './components/Basket';
 import Card from './components/Card'
-let faker = require('faker');
 import './App.css' 
 
 const App = () => {
+
+  let faker = require('faker');
 
   // make basket state: array of cat objects
   // make handleAddItem: input will be the items key, it will then add a cat with that key to the basket
