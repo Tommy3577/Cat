@@ -34,7 +34,7 @@ const App = () => {
 
   const getCat = async () => {
 
-    const response = await fetch('https://api.thecatapi.com/v1/images/search?limit=100')
+    const response = await fetch('https://api.thecatapi.com/v1/images/search?limit=50')
     const data =  await response.json()
 
     // make an array of image objects

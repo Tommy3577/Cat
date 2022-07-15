@@ -45,7 +45,6 @@ h2 {
 
 .deleteButt:hover {
     cursor: pointer;
-    padding: 15px;
     background-color: rgb(71, 177, 223);
 }
 
