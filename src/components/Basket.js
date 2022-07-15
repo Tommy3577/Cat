@@ -19,7 +19,7 @@ const Basket = ({cat, deleteBasket, index}) => {
             <div className='catsPrice'>
                 £{cat.price}
             </div>
-            <button className="deleteButt" onClick={() => deleteBasket(index)}>Take the cat out the bag</button>
+            <button className="deleteButt" onClick={() => deleteBasket(cat)}>Take the cat out the bag</button>
         </div>
 
     )

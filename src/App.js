@@ -17,10 +17,9 @@ const App = () => {
     setBasket( newArray )
   }
 
-  function deleteBasket(index) {
-    let storedItems = [...basket]
-    storedItems.splice(index, 1)
-    setBasket(storedItems)
+  function deleteBasket(item) {
+    let newArray = [...basket].filter( (element) => element !== item )
+    setBasket(newArray)
   }
 
   function totalBasket() {
