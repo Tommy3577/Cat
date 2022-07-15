@@ -34,7 +34,7 @@ const App = () => {
   function handleSubmit(item) {
     const newArray = [...basket]
     newArray.push(item)
-    setBasket( [...newArray, item] )
+    setBasket( newArray )
   }
 
   function deleteBasket(id) {
