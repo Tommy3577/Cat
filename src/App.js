@@ -37,8 +37,10 @@ const App = () => {
     setBasket( newArray )
   }
 
-  function deleteBasket(id) {
-    const updatedBasket = [...basket].filter((basket) => basket.id !== id)
+  function deleteBasket(item) {
+
+    const updatedBasket = [...basket].filter((cat) => cat !== item)
+    console.log(updatedBasket)
 
     setBasket(updatedBasket)
   }
@@ -71,6 +73,7 @@ const App = () => {
       element.name = faker.name.firstName()
       element.price = faker.commerce.price()
       element.breed = faker.animal.cat()
+      element.id = new Date().getTime()
     })
 
     // set cats state 
@@ -86,8 +89,8 @@ const App = () => {
       <div className='body'>
         
           <div class="sidebar" contenteditable>
-              {basket.map((item, index) => (
-                        <Basket name={item.name} price={item.price} breed={item.breed}/>
+              {basket.map((cat, index) => (
+                        <Basket cat={cat} deleteBasket={deleteBasket} key={index}/>
                       ))}
             </div>
 
