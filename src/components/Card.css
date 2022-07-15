@@ -6,6 +6,7 @@
 }
 
 .card-container {
+    background-color: whitesmoke;
     margin: 2rem;
     padding: 0.5rem;
     outline: 1px black solid;  
@@ -31,7 +32,7 @@
 
 .card-image img {
     overflow: hidden;
-
+    height: 200px;
     width: 200px;
 }
 
