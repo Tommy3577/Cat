@@ -65,7 +65,7 @@ const App = () => {
   }, [basket]);
 
   return (
-    <>
+
       <div className='body'>
                 {total ? 
               <div class="sidebar" contenteditable>
@@ -83,7 +83,7 @@ const App = () => {
               <div className='header'>
                 <p className='title'>Cats 4 Lyf</p>
                   <p className='subTitle'>
-                    Perfect Premium Pet Pussy Purchase Parlor Paradigm 
+                  Please select one out our Puurrfect Pets to puurrchase!  
                   </p>
               </div>
 
