@@ -30,6 +30,7 @@ const App = () => {
 
   const [ cats , setCats ] = useState([]);
   const [ basket, setBasket ] = useState([]);
+  const [ total, setTotal ] = useState(0)
 
   function handleSubmit(item) {
     const newArray = [...basket]
@@ -46,11 +47,12 @@ const App = () => {
   }
 
   function totalBasket() {
+
+    let sum = 0
     for (let i = 0; i < basket.length; i++) {
-      let sum = 0;
-      sum += basket[i].price;
-      console.log('sum')
+      sum += parseInt(basket[i].price)
     }
+    setTotal( sum )
   }
   
 
@@ -84,6 +86,11 @@ const App = () => {
     getCat();
   }, []);
 
+  useEffect(() => {
+    totalBasket();
+  }, [basket]);
+
+
   return (
     <>
       <div className='body'>
@@ -92,6 +99,13 @@ const App = () => {
               {basket.map((cat, index) => (
                         <Basket cat={cat} deleteBasket={deleteBasket} key={index}/>
                       ))}
+
+              <div className="total-container">
+
+              £{total}.00
+
+              </div>
+
             </div>
 
             <div class="content" contenteditable>
@@ -107,6 +121,7 @@ const App = () => {
                       ))}
 
                 </div>
+
             </div>
       </div>
     </>
