@@ -3,7 +3,7 @@ import React from 'react';
 import App from '../App';
 import './Basket.css' 
 
-const Basket = ({cat, deleteBasket}) => {
+const Basket = ({cat, deleteBasket, index}) => {
     
     // const {basketItems, onRemove} = props;
     // const totalPrice = basketItems.reduce((a, c) => a + c.price * c.qty, 0);
@@ -11,7 +11,7 @@ const Basket = ({cat, deleteBasket}) => {
 
         <div className="basketContainer">
             {cat.name} {cat.breed} {cat.price}
-            <button onClick={() => deleteBasket(cat)}>Delete</button>
+            <button onClick={() => deleteBasket(index)}>Delete</button>
         </div>
 
         // <aside id="basketBlock">
