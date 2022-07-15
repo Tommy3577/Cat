@@ -101,8 +101,15 @@ const App = () => {
                       ))}
 
               <div className="total-container">
-
-              £{total}.00
+              
+              {
+                total
+                ?
+                <p>£{total}.00</p>
+                :
+                <span></span>
+              }
+              
 
               </div>
 
