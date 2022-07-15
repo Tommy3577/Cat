@@ -1,10 +1,11 @@
+import { id_ID } from 'faker/lib/locales'
 import './Card.css'
 
-const Card = (props, index, handleSubmit, cats, id) => {
+const Card = (props, handleSubmit, todoNameRef) => {
     
 
     return (
-        <div className='card-container' onClick={() => props.handleSubmit(id)}>
+        <div className='card-container' id={props.id} onClick={(e) => props.handleSubmit(e)}>
             <div className='card-item card-image'>
                 <img src={props.url}/> 
             </div>
@@ -18,7 +19,6 @@ const Card = (props, index, handleSubmit, cats, id) => {
                 </p>
 
             </div>
-            {/* <button onClick={()=> {handleSubmit()}}>Add</button> */}
         </div>
     )
 }
