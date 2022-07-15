@@ -97,7 +97,10 @@ const App = () => {
             <div class="content" contenteditable>
 
                 <div className='header'>
-
+                  <p className='title'>Cats 4 Lyf</p>
+                  <p className='subTitle'>
+                    Perfect Premium Pet Pussy Purchase Parlor Paradigm 
+                  </p>
                 </div>
 
                 <div className='cards-container'>
