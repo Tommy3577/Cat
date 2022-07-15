@@ -65,7 +65,6 @@ const App = () => {
   }, [basket]);
 
   return (
-    <>
       <div className='body'>
                 {total ? 
               <div class="sidebar" contenteditable>
@@ -73,7 +72,7 @@ const App = () => {
                         <Basket cat={cat} deleteBasket={deleteBasket} key={index}/>
                       ))}
               <div className="total-container">
-              {total ? <p> £{total}.00</p> : <span></span>}
+              {total ? <p>Total: £{total}.00</p> : <span></span>}
               </div>
             </div>:<span></span>
               }
@@ -83,7 +82,7 @@ const App = () => {
               <div className='header'>
                 <p className='title'>Cats 4 Lyf</p>
                   <p className='subTitle'>
-                    Perfect Premium Pet Pussy Purchase Parlor Paradigm 
+                    Select the cats you'd like to purchase:
                   </p>
               </div>
 

@@ -3,18 +3,19 @@ import './Card.css'
 const Card = ({cat, handleSubmit}) => {
 
     return (
-        <div className='card-container' id={cat.id} onClick={() => handleSubmit(cat)}>
+        <div className='card-container' id={cat.id}>
             <div className='card-item card-image'>
                 <img src={cat.image}/> 
             </div>
-            <h2 className='card-item card-title' >{cat.breed}</h2>
+            <h2 className='card-item card-title' >Name: {cat.name}</h2>
             <div className='card-item card-text'>
                 <p>
-                    {cat.name}
+                    Breed: {cat.breed}
                 </p>
                 <p>
-                    £{cat.price}
+                    Price: £{cat.price}
                 </p>
+                <button className='addButton' onClick={() => handleSubmit(cat)}>Add to bag</button>
 
             </div>
         </div>
