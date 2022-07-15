@@ -9,6 +9,18 @@
   margin: 0;
 }
 
+.title {
+  font-size: 50px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.subTitle {
+  font-size: 25px;
+  text-align: center;
+  font-weight: bolder;
+}
+
 .sidebar {
   background-image: url(./components/images/black-fur.jpg);
   background-repeat: no-repeat;
