@@ -82,7 +82,7 @@ const App = () => {
               <div className='header'>
                 <p className='title'>Cats 4 Lyf</p>
                   <p className='subTitle'>
-                    Select the cats you'd like to purchase:
+                  Please select one out our Puurrfect Pets to puurrchase!  
                   </p>
               </div>
 
