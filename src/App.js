@@ -7,27 +7,6 @@ const App = () => {
 
   let faker = require('faker');
 
-  // make basket state: array of cat objects
-  // make handleAddItem: input will be the items key, it will then add a cat with that key to the basket
-  // make handelRemoveItem: input will be an event, it will happen onClick, input may also be an index, removes an item from the absket at a specific index
-
-
-  // Basket - leave it shaun!!
-
-  // const { cards } = data;
-  // // needs to be added to main (displaying component) -- we are getting the CARDS from the CAT DATA
-  // const [basketItems, setBasketItems] = useState([]);
-  // const onAdd = (cards) => {
-  //   {setBasketItems([...basketItems, {...cards, qty: 1}])}
-  // }
-
-  // const onRemove = (card) => {
-  //   const exist = basketItems.find((x) => x.id === card.id);
-  //   if(exist.qty === 1) {
-  //     setBasketItems(basketItems.filter((x) => x.id !== card.id))
-  //   }
-  // }
-
   const [ cats , setCats ] = useState([]);
   const [ basket, setBasket ] = useState([]);
   const [ total, setTotal ] = useState(0)
@@ -38,12 +17,10 @@ const App = () => {
     setBasket( newArray )
   }
 
-  function deleteBasket(item) {
-
-    const updatedBasket = [...basket].filter((cat) => cat !== item)
-    console.log(updatedBasket)
-
-    setBasket(updatedBasket)
+  function deleteBasket(index) {
+    let storedItems = [...basket]
+    storedItems.splice(index, 1)
+    setBasket(storedItems)
   }
 
   function totalBasket() {
@@ -54,8 +31,6 @@ const App = () => {
     }
     setTotal( sum )
   }
-  
-
 
   const getCat = async () => {
 
@@ -75,7 +50,6 @@ const App = () => {
       element.name = faker.name.firstName()
       element.price = faker.commerce.price()
       element.breed = faker.animal.cat()
-      element.id = new Date().getTime()
     })
 
     // set cats state 
@@ -90,18 +64,16 @@ const App = () => {
     totalBasket();
   }, [basket]);
 
-
   return (
-    <>
-      <div className='body'>
-        
-          <div class="sidebar" contenteditable>
-              {basket.map((cat, index) => (
-                        <Basket cat={cat} deleteBasket={deleteBasket} key={index}/>
-                      ))}
+    <div className='body'>
+        <div class="sidebar" contenteditable>
 
-              <div className="total-container">
-              
+            {basket.map((cat, index) => (
+                      <Basket cat={cat} index={index} deleteBasket={deleteBasket} key={index}/>
+                    ))}
+
+            <div className="total-container">
+
               {
                 total
                 ?
@@ -109,32 +81,28 @@ const App = () => {
                 :
                 <span></span>
               }
-              
-
-              </div>
 
             </div>
+          </div>
 
-            <div class="content" contenteditable>
+          <div class="content" contenteditable>
 
-                <div className='header'>
-                  <p className='title'>Cats 4 Lyf</p>
+              <div className='header'>
+                <p className='title'>Cats 4 Lyf</p>
                   <p className='subTitle'>
                     Perfect Premium Pet Pussy Purchase Parlor Paradigm 
                   </p>
-                </div>
+              </div>
 
-                <div className='cards-container'>
-                  
-                  {cats.map((cat, index) => (
-                        <Card key={index} handleSubmit={handleSubmit} cat={cat} />
-                      ))}
+              <div className='cards-container'>
+                
+                {cats.map((cat, index) => (
+                      <Card key={index} handleSubmit={handleSubmit} cat={cat} />
+                    ))}
 
-                </div>
-
-            </div>
-      </div>
-    </>
+              </div>
+          </div>
+    </div>
   );
 };
 
