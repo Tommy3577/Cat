@@ -8,7 +8,10 @@
 .basketContainer {
     margin: 5rem;
     padding: 0.5rem;
-    border: 1px black solid;  
-    background-color: blue;
+    border: 1px white solid;  
+    /* background-color: blue; */
     color: white;
+    font-size: smaller;
+    display: flex;
+    flex-direction: column;
 }
