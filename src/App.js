@@ -65,26 +65,19 @@ const App = () => {
   }, [basket]);
 
   return (
-    <div className='body'>
-        <div class="sidebar" contenteditable>
-
-            {basket.map((cat, index) => (
-                      <Basket cat={cat} index={index} deleteBasket={deleteBasket} key={index}/>
-                    ))}
-
-            <div className="total-container">
-
-              {
-                total
-                ?
-                <p>£{total}.00</p>
-                :
-                <span></span>
+    <>
+      <div className='body'>
+                {total ? 
+              <div class="sidebar" contenteditable>
+              {basket.map((cat, index) => (
+                        <Basket cat={cat} deleteBasket={deleteBasket} key={index}/>
+                      ))}
+              <div className="total-container">
+              {total ? <p> £{total}.00</p> : <span></span>}
+              </div>
+            </div>:<span></span>
               }
-
-            </div>
-          </div>
-
+              
           <div class="content" contenteditable>
 
               <div className='header'>
