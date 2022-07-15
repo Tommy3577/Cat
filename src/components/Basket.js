@@ -5,44 +5,23 @@ import './Basket.css'
 
 const Basket = ({cat, deleteBasket, index}) => {
     
-    // const {basketItems, onRemove} = props;
-    // const totalPrice = basketItems.reduce((a, c) => a + c.price * c.qty, 0);
     return (
 
         <div className="basketContainer">
-            {cat.name} {cat.breed} {cat.price}
-            <button onClick={() => deleteBasket(index)}>Delete</button>
+            <h2>Your cats in the bag...</h2>
+            <img src={cat.image}/> 
+            <div className='catsName'>
+                {cat.name}
+            </div>
+            <div className='catsBreed'>
+                {cat.breed}
+            </div>
+            <div className='catsPrice'>
+                £{cat.price}
+            </div>
+            <button className="deleteButt" onClick={() => deleteBasket(index)}>Take the cat out the bag</button>
         </div>
 
-        // <aside id="basketBlock">
-        //     <h2>Basket</h2>
-        //     <div>{basketItems.length === 0 && <div>"Basket is empty"</div>}</div>
-
-        //     {basketItems.map((cat) => (
-        //         <div>
-        //             <div>{cat.name}</div>
-        //             <div>
-
-        //             </div>
-        //             <div>
-        //                 {cat.qty} x ${cat.price.toFixed(2)}
-        //             </div>
-        //         </div>
-        //     ))}
-        //     {basketItems.length !== 0 && (
-        //         <>
-        //         <br></br>
-        //         <div>Total Price</div>
-        //         <div>${totalPrice.toFixed(2)}</div>
-        //         <br></br>
-        //         <div>
-        //             <button onClick={() => alert('Checkout')}>Checkout</button>
-        //         </div>
-        //         </>
-
-    //         )}
-
-    //     </aside>
     )
 }
 
